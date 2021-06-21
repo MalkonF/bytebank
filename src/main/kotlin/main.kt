@@ -1,6 +1,13 @@
 fun main() {
     println("Bem vindo")
-    var i = 0
+    loop@ for (i in 1..100) {
+        println("i $i")
+        for (j in 1..100) {
+            println("j $j")
+            if (j == 5) break@loop
+        }
+    }
+   /* var i = 0
     while (i < 5) {
         val titular: String = "Alex $i"
         val numeroConta = 1000 + i
@@ -14,7 +21,7 @@ fun main() {
         println("Saldo da conta: $saldo")
         println()
         i++
-    }
+    }*/
     /*for (i in 1..5) { //or for(i in 5 downTo 1 step 2){
         if (i == 4) {
             break
