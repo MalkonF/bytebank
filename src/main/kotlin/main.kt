@@ -1,3 +1,6 @@
 fun main(){
-    print("Bem vindo")
+    println("Bem vindo")
+    val titular = "Alex"
+    println("titular:"+ titular)
+    println("Titular $titular")//string template
 }
