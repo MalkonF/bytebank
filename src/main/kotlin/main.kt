@@ -1,58 +1,25 @@
 fun main() {
-    /*val conta = Conta() //conta aponta para o endereço da Conta()
-    conta.titular = "Malkon"
-    println(Conta().titular) // instancia a classe Conta. Aqui é um outro obj Conta
-    println(conta.titular)*/
-    //testaLacos()
+    val numeroX = 0
+    var numeroY = numeroX
+    numeroY++
+    println("NumeroX $numeroX")
+    print("NumeroY $numeroY")
 
-    class Conta {
-        var titular = ""
-        var numero = 0
-        var saldo = 0.0
-    }
+    val contaJoao = Conta()
+    contaJoao.titular = "João"
+    var contaMaria = contaJoao //contaMaria fica com endereço de contaJoao. Qualquer alteração nela reflete joao
+    contaMaria.titular = "Maria"
+    var contaMaria2 = Conta() //instancia um novo obj Conta com novas posições na memória
 
-    val contaAlex = Conta()
-/*Por mais que exista a possibilidade de criar dentro de funções, dessa forma não é possível criar
-objetos do tipo Conta em outras partes do programa, ou seja, perdemos a reutilização de código.*/
+    println("Conta João ${contaJoao.titular}")
+    println("Conta Maria ${contaMaria.titular}")
+
+    println(contaMaria) //vao ter os mesmo hashs, mesma referência na memoria
+    println(contaJoao)
 }
 
-
-/*class Conta {
-var titular = "Rodrigo"
-var numero = 0
-var saldo = 0.0
+class Conta {
+    var titular = ""
+    var numero = 0
+    var saldo = 0.0
 }
-
-fun testaLacos() {
-var i = 0
-while (i < 5) {
-val titular: String = "Alex $i"
-val numeroConta = 1000 + i
-var saldo = i + 10.0
-saldo = 100 + 2.0 // resultado é em double
-saldo = 0.0
-saldo -= 300.00
-println("titular:" + titular)
-println("Titular $titular")//string template
-println("Número da conta: $numeroConta")
-println("Saldo da conta: $saldo")
-println()
-i++
-}
-for (i in 1..5) { //or for(i in 5 downTo 1 step 2){
-if (i == 4) {
-break
-}
-val titular: String = "Alex $i"
-val numeroConta = 1000 + i
-var saldo = i + 10.0
-saldo = 100 + 2.0 // resultado é em double
-saldo = 0.0
-saldo -= 300.00
-println("titular:" + titular)
-println("Titular $titular")//string template
-println("Número da conta: $numeroConta")
-println("Saldo da conta: $saldo")
-println()
-}
-}*/
