@@ -1,13 +1,19 @@
 fun main() {
-    println("Bem vindo")
-    loop@ for (i in 1..100) {
-        println("i $i")
-        for (j in 1..100) {
-            println("j $j")
-            if (j == 5) break@loop
-        }
-    }
-   /* var i = 0
+    val conta = Conta() //conta aponta para o endereço da Conta()
+    conta.titular = "Malkon"
+    println(Conta().titular) // instancia a classe Conta. Aqui é um outro obj Conta
+    println(conta.titular)
+    //testaLacos()
+}
+
+class Conta {
+    var titular = "Rodrigo"
+    var numero = 0
+    var saldo = 0.0
+}
+
+fun testaLacos() {
+    var i = 0
     while (i < 5) {
         val titular: String = "Alex $i"
         val numeroConta = 1000 + i
@@ -21,8 +27,8 @@ fun main() {
         println("Saldo da conta: $saldo")
         println()
         i++
-    }*/
-    /*for (i in 1..5) { //or for(i in 5 downTo 1 step 2){
+    }
+    for (i in 1..5) { //or for(i in 5 downTo 1 step 2){
         if (i == 4) {
             break
         }
@@ -37,16 +43,5 @@ fun main() {
         println("Número da conta: $numeroConta")
         println("Saldo da conta: $saldo")
         println()
-    }*/
-
-    // testaCondicoes(saldo)
-}
-
-fun testaCondicoes(saldo: Double) {
-    if (saldo > 0.0) {
-        println("Conta é positiva")
-    } else if (saldo == 0.0) {
-        println("Conta é neutra")
-    } else
-        println("Conta é negativa")
+    }
 }
