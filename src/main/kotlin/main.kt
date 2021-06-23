@@ -2,9 +2,12 @@ fun main() {
     testaCopiasEReferencias()
 }
 
-class Conta {
-    var titular = ""
-    var numero = 0
+class Conta(
+    var titular: String,
+    var numero: Int
+) {
+    //var titular = "" //quando vc declara var no construtor é como se vc declarasse ela aqui
+    // var numero = 0
     var saldo = 2.0
         set(valor) { //private set(valor) set fica privado, nao acessível fora da classe
             if (valor > 0)
@@ -16,6 +19,13 @@ class Conta {
 
         }
         get
+
+    //constructor() //construtor padrão, declarando aqui vc consegue instanciar a classe sem nenhum atributo no construtor
+    // constructor(titular: String, numero: Int) {
+    //    this.titular = titular
+    //     this.numero = numero
+    // }
+
 
     fun deposita(valor: Double) {
         this.saldo += valor
@@ -44,12 +54,12 @@ fun testaCopiasEReferencias() {
     println("NumeroX $numeroX")
     println("NumeroY $numeroY")
 
-    val contaJoao = Conta()
+    val contaJoao = Conta("João", 1000)
     contaJoao.titular = "João"
     //var contaMaria = contaJoao //contaMaria fica com endereço de contaJoao. Qualquer alteração nela reflete joao
-    var contaMaria = Conta()
+    var contaMaria = Conta("Maria", 1001)
     contaMaria.titular = "Maria"
-    var contaMaria2 = Conta() //instancia um novo obj Conta com novas posições na memória
+    //var contaMaria2 = Conta() //instancia um novo obj Conta com novas posições na memória
 
     println("Conta João ${contaJoao.titular}")
     println("Conta Maria ${contaMaria.titular}")
