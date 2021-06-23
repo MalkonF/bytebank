@@ -1,8 +1,27 @@
 fun main() {
-    testaCopiasEReferencias()
+    //testaCopiasEReferencias()
+
+    var conta = Conta("Malkon", 77)
+    println(conta.titular)
+    println(conta.numero)
+    println(conta.saldo)
 }
 
 class Conta(
+    var titular: String,
+    var numero: Int
+) {
+    var saldo = 0.0
+        private set
+
+    init {
+        //Executa alguma coisa durante a construção.
+        println("Testando...")
+    }
+
+}
+
+/*class Conta(
     var titular: String,
     var numero: Int
 ) {
@@ -91,5 +110,5 @@ fun testaCopiasEReferencias() {
         println("ok")
     else
         println("erro")*/
-}
+}*/
 
