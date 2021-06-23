@@ -5,7 +5,17 @@ fun main() {
 class Conta {
     var titular = ""
     var numero = 0
-    private var saldo = 0.0
+    var saldo = 2.0
+        set(valor) { //private set(valor) set fica privado, nao acessível fora da classe
+            if (valor > 0)
+                field = valor
+            println("Field: $field")//field é a var que recebe o valor quando vc atribui pro atributo.
+            //quando vc chama o set o println aqui é mostrado
+            //Todas as var no kotlin são properties, elas tem o set e get implicito
+            //msmo quando n declarados explicitamente eles existem
+
+        }
+        get
 
     fun deposita(valor: Double) {
         this.saldo += valor
@@ -24,17 +34,6 @@ class Conta {
         } else {
             return false
         }
-    }
-
-    fun getSaldo(): Double {
-        return saldo
-    }
-
-    /*ao encapsularmos os atributos protegemos eles. Antes qualquer um podia colocar
-         qualquer valor, agora podemos validarmos o valor antes de atribuir ao atributo */
-    fun setSaldo(valor: Double) {
-        if (valor > 0)
-            saldo = valor
     }
 }
 
@@ -57,10 +56,10 @@ fun testaCopiasEReferencias() {
 
     println(contaMaria) //vao ter os mesmo hashs, mesma referência na memoria
     println(contaJoao)
-    contaJoao.setSaldo(50.0)
-    contaMaria.setSaldo(-70.0)
-    println(contaJoao.getSaldo())
-    println(contaMaria.getSaldo())
+    contaJoao.saldo = 50.0
+    contaMaria.saldo = 40.0
+    println(contaJoao.saldo)
+    println(contaMaria.saldo)
 
 
     /*println("Depositando na conta do João")
