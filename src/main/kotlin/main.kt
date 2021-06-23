@@ -1,7 +1,10 @@
 fun main() {
     //testaCopiasEReferencias()
 
-    var conta = Conta("Malkon", 77)
+    var conta = Conta(
+        numero = 77,
+        titular = "Malkon"
+    )//qnd vc implement ao labels vc pode mudar a ordem dos parametros que está no construtor
     println(conta.titular)
     println(conta.numero)
     println(conta.saldo)
@@ -9,8 +12,9 @@ fun main() {
 
 class Conta(
     var titular: String,
-    var numero: Int
+    var numero: Int = 0 //quando vc inicializa aqui, vc pode por no construtor da instanciação somente o titular, o numero fica opcional
 ) {
+    //Conta("Malkon")
     var saldo = 0.0
         private set
 
