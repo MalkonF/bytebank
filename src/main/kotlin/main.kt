@@ -1,11 +1,30 @@
 fun main() {
-testaCopiasEReferencias()
+    testaCopiasEReferencias()
 }
 
 class Conta {
     var titular = ""
     var numero = 0
     var saldo = 0.0
+
+    fun deposita(valor: Double) {
+        this.saldo += valor
+    }
+
+    fun saca(valor: Double) {
+        if (saldo >= valor)
+            saldo -= valor
+    }
+
+    fun transfere(valor: Double, destino: Conta): Boolean {
+        if (saldo >= valor) {
+            saldo -= valor //tira da conta em que foi chamado o transfere
+            destino.saldo += valor
+            return true
+        } else {
+            return false
+        }
+    }
 }
 
 fun testaCopiasEReferencias() {
@@ -29,14 +48,23 @@ fun testaCopiasEReferencias() {
     println(contaJoao)
 
     println("Depositando na conta do João")
-    deposita(contaJoao, 50.0)
+    contaJoao.deposita(50.0)
     println(contaJoao.saldo)
     println("Depositando na conta da Maria")
-    deposita(contaMaria, 70.0)
+    contaMaria.deposita(70.0)
     println(contaMaria.saldo)
+
+    println("Sacando João...")
+    contaJoao.saca(20.0)
+    println(contaJoao.saldo)
+    println("Sacando Maria...")
+    contaMaria.saca(25.0)
+    println(contaMaria.saldo)
+
+    println("Transferindo...")
+    if (contaJoao.transfere(10.0, contaMaria))
+        println("ok")
+    else
+        println("erro")
 }
 
-fun deposita(conta: Conta, valor: Double) {
-    conta.saldo += valor
-
-}
